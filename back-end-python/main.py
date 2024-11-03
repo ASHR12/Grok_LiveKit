@@ -7,8 +7,7 @@ from livekit.agents.llm import (
     ChatMessage,
 )
 from livekit.agents.voice_assistant import VoiceAssistant
-from livekit.plugins import deepgram, silero, cartesia, openai , elevenlabs
-
+from livekit.plugins import deepgram, silero, openai , elevenlabs
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -19,6 +18,7 @@ def prewarm(proc: JobProcess):
 
 
 async def entrypoint(ctx: JobContext):
+    print(f"Room Name: {ctx.room.name}")
     initial_ctx = ChatContext(
         messages=[
             ChatMessage(
@@ -28,22 +28,27 @@ async def entrypoint(ctx: JobContext):
         ]
     )
 
+    # Define llm
+    grok = openai.LLM(
+            base_url="https://api.x.ai/v1",
+            api_key=os.getenv("GROK_API_KEY"),
+            model="grok-beta"
+        )
+
+    # Define TTS
     voice = elevenlabs.Voice(
         id="nPczCjzI2devNBz1zQrb", name="Brian", category="premade"
     )
+    elevenlabs_tts= elevenlabs.TTS(model_id="eleven_multilingual_v2", voice=voice)
 
     assistant = VoiceAssistant(
         vad=ctx.proc.userdata["vad"],
         stt=deepgram.STT(),
-        llm=openai.LLM(
-            base_url="https://api.x.ai/v1",
-            api_key=os.getenv("GROK_API_KEY"),
-            model="grok-beta"
-        ),
-        # tts=cartesia.TTS(voice="248be419-c632-4f23-adf1-5324ed7dbf1d"),
-        tts = elevenlabs.TTS(model_id="eleven_multilingual_v2", voice=voice),
+        llm=grok,
+        tts = elevenlabs_tts,
         chat_ctx=initial_ctx,
     )
+
 
     await ctx.connect()
     assistant.start(ctx.room)
