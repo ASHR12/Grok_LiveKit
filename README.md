@@ -4,82 +4,14 @@ Grok Voice Assistant is a project that integrates voice interaction capabilities
 
 ## Project Structure
 
-- **Frontend**: Located in the `frontend-nextjs` directory, this part of the application handles user interactions and displays the voice assistant interface.
+- **Frontend**: There are two frontend:
+  **Simple** : Located in the `frontend-nextjs` directory, this part of the application handles user interactions and displays the voice assistant interface.
+  **Complex** : Located in the `grok-agent-playground` directory, this is a modified version to simplify the video, logo, and a few other things of LiveKit's original Agent Playground. You can use this or check out [LiveKit&#39;s original Agent Playground](https://github.com/livekit/agents-playground) for the full feature set.
 - **Backend**: Located in the `back-end-python` directory, this part manages the voice assistant's logic and integrates with various APIs.
 
 ## Development Setup
 
-### Frontend Setup
-
-1. Navigate to the frontend directory:
-
-   ```bash
-   cd frontend-nextjs
-   ```
-
-2. Create a `.env.local` file and add the required environment variables to connect to your LiveKit server:
-
-   ```plaintext
-   LIVEKIT_API_KEY=
-   LIVEKIT_API_SECRET=
-   LIVEKIT_URL=
-   ```
-
-3. Install dependencies:
-
-   ```bash
-   npm install
-   ```
-
-4. Run the local development server:
-
-   ```bash
-   npm run dev
-   ```
-
-5. Open your browser and go to `http://localhost:3000`.
-
-### Backend Setup
-
-1. Navigate to the backend directory:
-
-   ```bash
-   cd back-end-python
-   ```
-
-2. Create a virtual environment:
-
-   ```bash
-   python -m venv .venv
-   ```
-
-3. Activate the virtual environment:
-
-   ```bash
-   source .venv/bin/activate
-   ```
-
-4. Install the required packages:
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-5. Create a `.env` file with the following variables:
-
-   ```plaintext
-   LIVEKIT_URL=
-   LIVEKIT_API_KEY=
-   LIVEKIT_API_SECRET=
-   DEEPGRAM_API_KEY=
-   ELEVEN_API_KEY=
-   GROK_API_KEY=
-   ```
-
-6. Run the application:
-   ```bash
-   python main.py dev
-   ```
+Read respective README file to run and setup.
 
 ## Usage
 
