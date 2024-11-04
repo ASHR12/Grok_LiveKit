@@ -1,18 +1,29 @@
-# Grok Voice assistant frontend
+### Frontend Setup
 
-A frontend for interacting with [LiveKit Agents](https://docs.livekit.io/agents).
+1. Navigate to the frontend directory:
 
-## Development setup
+   ```bash
+   cd frontend-nextjs
+   ```
 
-- Create `.env.local`, then add the required environment variables to connect to your LiveKit server.
-  LIVEKIT_API_KEY=
-  LIVEKIT_API_SECRET=
-  LIVEKIT_URL=
+2. Create a `.env.local` file and add the required environment variables to connect to your LiveKit server:
 
-```shell
-# Make sure dependencies are installed (only required once).
-npm install
-# Run den local development server.
-npm dev
-# Open http://localhost:3000 in your browser.
-```
+   ```plaintext
+   LIVEKIT_API_KEY=
+   LIVEKIT_API_SECRET=
+   LIVEKIT_URL=
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. Run the local development server:
+
+   ```bash
+   npm run dev
+   ```
+
+5. Open your browser and go to `http://localhost:3000`.

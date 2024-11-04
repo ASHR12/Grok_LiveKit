@@ -5,3 +5,4 @@ livekit-plugins-silero
 livekit-plugins-cartesia
 livekit-plugins-elevenlabs
 python-dotenv
+aiohttp
